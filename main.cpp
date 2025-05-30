@@ -37,16 +37,18 @@ int main(int argc, char* argv[])
         std::cout << "Corrente: " << corrente << std::endl;
         std::cout << "Tempo: " << tempo << std::endl;
 
-        for (int i = 0; i < 10; ++i) {
-        // Verifica se o caractere é um dígito
-        if (!std::isdigit(CodigoSerie[i])) 
+        for (int i = 0; i < 10; ++i) 
         {
-            std::cout << "Erro: O caractere na posição " << i + 1 << " não é um dígito." << std::endl;
-            return 1;
+            // Verifica se o caractere é um dígito
+            if (!std::isdigit(CodigoSerie[i])) 
+            {
+                std::cout << "Erro: O caractere na posição " << i + 1 << " não é um dígito." << std::endl;
+                return 1;
+            }
+            // Converte o caractere para inteiro (subtrai 48 para obter o valor numérico)
+            identificador[i] = CodigoSerie[i] - 48;
         }
-        // Converte o caractere para inteiro (subtrai 48 para obter o valor numérico)
-        identificador[i] = CodigoSerie[i] - 48;
-        }
+        
 
         PortaSerial = 12;
         tensao = 232.6;
@@ -101,30 +103,8 @@ int main(int argc, char* argv[])
             std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(Pacote[i]) << " ";
         }
 
-        /*for (size_t i = 0; i < DigitosDaTensao.size(); ++i) 
-        {
-            //std::cout << "Digito " << i + 1 << ": " << static_cast<int>(DigitosDaTensao[i]) << std::endl;
-            Dados += static_cast<char>('0' + DigitosDaTensao[i]);
-        }*/
-
-        //Pacote = Preambulo + ParSerialCode + Tamanho + EscopoIndice + Dados;
-        std::string CRCData;
-
-        //CRCData = calcula_crc16(Pacote, Pacote.length());
-
-        //Pacote = Pacote + CRCData;
         
         std::cout << "Pacote de Tensao: " << std::endl;
-
-        /*for (size_t i = 0; i < Pacote.size(); ++i)
-        {
-            std::cout << Pacote[i];
-
-            if (i % 2 == 1)
-            {
-                std::cout << " ";
-            }
-        }*/
 
         std::cout << std::endl;
     }
