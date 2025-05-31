@@ -13,7 +13,7 @@ std::vector<unsigned char> SepDigitos(uint16_t valor);
 int main(int argc, char* argv[]) 
 {
 
-    std::string CodigoSerie = "0206050809";
+    std::string CodigoSerie;
     int PortaSerial = 0;
     double tensao = 0.0;
     double corrente = 0.0;
